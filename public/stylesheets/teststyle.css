@@ -1,0 +1,77 @@
+body{
+  font-family: 'Georgia';
+  background-color: white;
+  color: #444;
+}
+header {
+  
+  font-family: 'Quicksand';
+  padding: 50px 10px;
+  color: #fff;
+  font-size: 25px;
+  text-align: center;
+  background-color: #00BFD0;
+  border-bottom: 1px solid;
+  text-shadow: 0px -1px 0px;
+}
+.main-content{
+  float: left;
+  width: 550px;
+
+  
+}
+ p{
+    line-height: 1.8;
+    
+  }
+  #pl{
+    margin-bottom: 20px;
+    
+  }#ps{
+    font-size: 13px;
+      padding: 0px 10px;
+      margin-bottom: 10px;
+    
+  }
+.sitecontainer{
+  
+  width: 750px;
+  margin: 50px auto;
+  overflow: hidden;
+  
+}
+#Calh1{
+      
+      margin: 13px 10px 4px;
+      padding-bottom: 10px;
+      border-bottom: 1px dotted #ddd;
+      border-radius: 2px 2px 0px 0px;
+      margin-bottom: 10px;
+} 
+
+.sidebar{
+  
+  float: left;
+  width: 200px;
+  
+}
+footer{
+  
+  margin: 50px auto;
+  border-top: 1px dotted #ccc;
+  padding-top: 5px;
+  font-size: 13px;
+  text-align: center;
+  background-color: lightgrey;
+}
+iframe{
+margin: 0;
+padding: 0;
+border: none;
+width: value;
+height: value;
+overflow: scroll;
+margin-top: 20px;
+margin-bottom: 30px;
+}
+

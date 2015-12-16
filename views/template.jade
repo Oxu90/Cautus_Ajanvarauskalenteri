@@ -1,0 +1,31 @@
+
+doctype html
+html(lang='fi')
+  head
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    meta(charset="utf-8")
+    meta(http-equiv="X-UA-Compatible" content="IE=edge")
+    title Cautus Ajanvaraus
+    link(rel='stylesheet', href='/stylesheets/teststyle.css')
+  body
+    header
+    .sitecontainer
+      .main-content
+        h1#Calh1 Hei #{etunimi}, Olette varanneet ajan terapeutilta
+        h2#Calh1 Ajanvarauksen tiedot:
+        p#pl
+          ul
+            li Nimi: #{etunimi} #{sukunimi}
+            li ajankohta: #{start}
+            li sähköposti: #{email}
+            li puhelinnumero: #{puh}
+            li lisätiedot: #{lis}
+        p#pl
+            Jos Jos tiedoissa on jotain puutteita olkaa hyvä ja ottakaa yhteyttä numeroon +3580503812790 tai sähköpostitse osoitteeseen test@jotain.com
+      .sidebar
+            h1#Calh1 Tietoja
+            p#ps Mikäli ette pääse saapuvaan sovittuna ajankohtana, ilmoitattehan siitä mahdollisimman pian. Kiitos
+            p#ps Vix ea ubique prompta nominati, cum at dicam sadipscing. Nobis perpetua interesset nam in. 
+    footer
+      p &copy; Cautus Oy, Oskari Putkonen, 2015
+      p Running on Node.js with Express and Jade

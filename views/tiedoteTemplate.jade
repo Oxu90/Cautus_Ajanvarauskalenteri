@@ -1,0 +1,27 @@
+
+doctype html
+html(lang='fi')
+  head
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    meta(charset="utf-8")
+    meta(http-equiv="X-UA-Compatible" content="IE=edge")
+    title Cautus Ajanvaraus
+  body
+    header
+    .sitecontainer
+      div
+        h1#Calh1 Hei, Olette saaneet uuden ajanvarauksen
+        h2#Calh1 Ajanvarauksen sekä varaajan tiedot:
+        p#pl
+          ul
+            li Nimi: #{etunimi} #{sukunimi}
+            li ajankohta: #{start} - #{end}
+            li sähköposti: #{email}
+            li puhelinnumero: #{puh}
+            li lisätiedot: #{lis}
+      div
+            h2#Calh1 Tietoja
+            p#ps Vix ea ubique prompta nominati, cum at dicam sadipscing. Nobis perpetua interesset nam in. 
+    footer
+      p &copy; Cautus Oy, Oskari Putkonen, 2015
+      p Running on Node.js with Express and Jade

@@ -1,0 +1,42 @@
+extends layout
+
+block content
+   #wrapper
+            #titlediv
+                  //.h1 Cautus Appointment
+            #calendar
+                  span#message
+            div#formtable2 </br>
+                  //div#speechbuble
+                        //span#Info Olkaa hyvä ja valitkaa ensin aika jonka haluatte varata 
+            form#formtable(onsubmit='return false')
+                         #SelectedTime
+                         span#message
+                         table(cols=2)
+                                tr
+                                     td
+                                     input#firstname(type='text', required='',maxlength=20, placeholder='Etunimi')
+                                     td
+                                     input#lastname(type='text',required='',maxlength=30, placeholder='Sukunimi')
+                               tr
+                                     td
+                                     input#to(type='email', required='', placeholder='sähköposti (matti@email.fi)')
+                                     td
+                                     input#phone(type='number',required='', placeholder='Puhelinnumero')
+                               tr
+                                     td
+                                     textarea#content(cols='50', rows='4',form="formtable", placeholder='Lisätietoja')
+                               tr
+                                    td
+                                    </br>
+                               tr
+                                     td
+                                     input#startdate(type='hidden', value='')
+                                     td
+                                     input#enddate(type='hidden', value='')
+                          button#send_email(type='button') Lähetä 
+                          #message
+                          
+                                     
+                  
+      

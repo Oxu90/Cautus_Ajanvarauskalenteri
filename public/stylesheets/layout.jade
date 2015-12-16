@@ -1,0 +1,187 @@
+doctype html
+html
+    head
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    meta(charset="utf-8")
+    meta(http-equiv="X-UA-Compatible" content="IE=edge")
+    title= title
+    //KOMMENTOIDUT INCLUDET OVAT VAIHTOEHTOISIA, ULKOISTEN SERVEREIDEN HOSTAAMIA
+    //STYLESHEETS
+    link(rel='stylesheet', href='jAlert-master/src/jAlert-v3.css')
+    //link(href='http://fullcalendar.io/js/fullcalendar-2.4.0/fullcalendar.css', rel='stylesheet')
+    link(href='fullcalendar/dist/fullcalendar.css', rel='stylesheet')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/bootstrap/css/bootstrap.css')
+    link(rel='stylesheet', href='/bootstrap/css/bootstrap-theme.css')
+    //link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css', integrity='sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==', crossorigin='anonymous')
+    //JQUERY JA MOMENTJS
+    //script(src='//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js')
+    script(src='moment/min/moment.min.js')
+    script(src='//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js')
+    //KALENTERI INCLUDET!
+    //script(src='http://fullcalendar.io/js/fullcalendar-2.4.0/fullcalendar.js')
+    script(src='fullcalendar/dist/fullcalendar.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.4.0/gcal.js')
+    //script(src='fullcalendar/dist/gcal.js')
+    //script(src='https://cdn.jsdelivr.net/fullcalendar/2.0.1/lang/fi.js')
+    script(src='fullcalendar/dist/lang/fi.js')
+    //POP-UP INCLUDET
+    script(src='jAlert-master/src/jAlert-v3.min.js')
+    script(src='jAlert-master/src/jAlert-functions.min.js')
+    script(src='/bootstrap/js/bootstrap.js')
+    //PÄÄ SCRIPTI, KALENTERI ja EMAIL
+    script.
+      // <![CDATA[
+        $(document).ready(function(){
+        //$("#formtable").hide();
+        //$("#formtable2").show();
+        //$("#send_email").hide();
+        $('#send_email').attr("disabled", true); //lähetä nappi pois käytöstä ennen kuin päivämäärä valittu
+        var from,to,firstname,lastname,text,startdate,enddate,phone;
+        // KALENTERI!
+        $('#calendar').fullCalendar({
+        //KALENTERIN EVENTIEN HAKU
+        googleCalendarApiKey: 'AIzaSyAYYyFWedE8wTE_D5_A1Pwb_3uFHDB8tmc' ,
+        events: {
+        googleCalendarId: 'oskari.putkonen@cautus.fi',
+        color: 'red',
+        editable: false,
+        className: "reservedSpot",
+        defaultTimedEventDuration: '02:00:00',
+        forceEventDuration: true,
+        rendering: "background"
+        },
+        header: {
+        left: 'prev next',
+        center: 'title',
+        right: 'today'
+        },
+        //GOOGLE CAL?
+        eventClick: function(calEvent, jsEvent, view) {
+        alert('ajankohta on jo varattu');
+        location.reload();
+        },
+        //VARATUN AJAN KLIKKAUS!
+        dayClick: function(date, jsEvent, view, resourceObj) {
+        if (jsEvent.target.classList.contains('fc-bgevent')) {
+         $.jAlert({
+        'title': 'Ajankohta on jo varattu',
+        'content': 'Ole hyvä ja valitse ajankohta punaisen alueen ulkopuolelta',
+        'theme': 'red',
+        'btns': { 'text': 'sulje' }
+        });
+        //$("#formtable").hide();
+        //$("#formtable2").show();
+        //$("#send_email").hide();
+        $('#send_email').attr("disabled", true);
+        }
+        },
+        //AJAN KLIKKAUS LOPPU!
+        //KALENTERIN ASETUKSET
+        defaultView: 'agendaWeek', //viikko näkymä
+        eventStartEditable: false,
+        durationEditable: false,
+        allDaySlot: false,
+        eventDurationEditable: false,
+        //ajankohdanvalinta
+        selectable: true, //slotteja pystyy valita
+        selectHelper: true, // näyttää valitun slotin ja sen ajan
+        select: function(start, end) {
+        //ajan hallinta 
+        var eventstart = start.format();
+        var eventend = end.format();
+        var showstart= moment(eventstart).format('Do MMMM[ta] YYYY, [kello:] H:mm') ;
+        var showend =  moment(eventend).format('H:mm') ;
+        var time = new Date(eventstart);
+        if(time > moment()){ //jos tulevaisuudessa
+        $("#startdate").val(eventstart); //asettaa aloitus hidden inputin
+        $("#enddate").val(eventend);  //asettaa lopetus hidden inputin
+        $.jAlert({ //pop-up
+        'title': 'Vapaa aika!',
+        'content': 'Valitsemanne ajankohta: </br><b>' + showstart+ ' - '+showend+'</b></br> Olkaa hyvä ja täyttäkää vielä yhteystietonne',
+        'theme': 'green',
+        'btns': { 'text': 'sulje' }
+        });
+        //$("#formtable2").hide();
+        //$("#formtable").fadeIn();
+        //$("#send_email").show();
+        $('#send_email').attr("disabled", false);
+        }
+        else{
+        $.jAlert({ //pop-up jos ajankojta on mennyt
+        'title': 'Ajankohta on jo mennyt',
+        'content': 'Ette voi valita mennyttä ajankohtaa, olkaa hyvä ja valitkaa uudestaan',
+        'theme': 'red',
+        'btns': { 'text': 'sulje' }
+        });
+        //$("#formtable").hide();
+        //$("#formtable2").show();
+        //$("#send_email").hide();
+        $('#send_email').attr("disabled", true);
+        $('#calendar').fullCalendar('unselect'); //poistaa epäkelvon valinnan
+        }
+        },
+        editable: true,
+        unselectAuto: false,
+        eventLimit: true, // allow "more" link when too many events
+        weekends: false, // Näkyykö viikonloppu?
+        //hiddenDays: [0],  jos haluaa toisen vklp päicistä näkyviin.
+        slotDuration: '01:00:00', //aikojen slottien koko
+        businessHours: { //aukioloajat
+        start: '08:00', // a start time 
+        end: '18:00', // an end time 
+        dow: [ 1, 2, 3, 4, 5 ]
+        },
+        minTime: "08:00:00",
+        maxTime: "18:00:00",
+        contentHeight: 'auto',
+        eventOverlap: false,
+        slotEventOverlap: false,
+        selectOverlap: false,
+        viewRender: function( view, element ) {
+        if(moment().isAfter(view.intervalStart, 'day')) {
+        $('.fc-prev-button').addClass('fc-state-disabled');
+        $('.fc-today').prevAll('td').css('backgroundColor','#ABAFB0');
+        $('.fc-today').parent().prevAll().find('td').css('backgroundColor','#ABAFB0');
+        }
+        else {
+        $('.fc-prev-button').removeClass('fc-state-disabled');
+        }
+        }
+        });
+        //SÄHKÖPOSTI JA FORM TIEDOT
+        $("#send_email").click(function(){
+        to=$("#to").val();
+        firstname=$("#firstname").val();
+        lastname=$("#lastname").val();
+        text=$("#content").val();
+        startdate=$("#startdate").val();
+        enddate=$("#enddate").val();
+        phone=$("#phone").val();
+        $.get("http://localhost:3000/send",{to:to,firstname:firstname,lastname:lastname,text:text,phone:phone,startdate:startdate,enddate:enddate},function(data){
+        if(data=="sent")
+        {
+        $("#message").empty().html("Ajanvaraus tallennettu. Tarkistakaa sähköpostinne");
+        successAlert('Success!', 'Saved your profile.');
+        $.jAlert({ //pop-up
+        'title': 'Aika varattu!',
+        'content': 'Valitsemanne ajankohta: </br><b>' + showstart+ ' - '+showend+'</b></br> Olkaa hyvä ja täyttäkää vielä yhteystietonne',
+        'theme': 'green',
+        'btns': { 'text': 'sulje' }
+        });
+        }
+        else{
+        $.jAlert({ //pop-up
+        'title': 'Jotain meni pieleen!!',
+        'content': 'Ottakaa yhteyttä IT-tukeen',
+        'theme': 'red',
+        'btns': { 'text': 'sulje' }
+        });
+        }
+        });
+        window.location.reload();
+        });
+        });
+    script(src='https://apis.google.com/js/client.js?onload=checkAuth')
+  body
+    block content

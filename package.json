@@ -1,0 +1,29 @@
+{
+  "name": "CautusAppointment",
+  "version": "1.0.0",
+  "private": false,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "async": "^1.5.0",
+    "body-parser": "~1.13.2",
+    "cookie-parser": "~1.3.5",
+    "debug": "~2.2.0",
+    "email-templates": "^2.0.1",
+    "express": "^4.13.3",
+    "fullcalendar": "^2.4.0",
+    "google-auth-library": "^0.9.6",
+    "googleapis": "^2.1.6",
+    "html-template": "^1.2.2",
+    "jade": "~1.11.0",
+    "jquery": "^2.1.4",
+    "moment": "^2.10.6",
+    "morgan": "~1.6.1",
+    "node-gyp": "^3.1.0",
+    "nodemailer": "~0.7.1",
+    "nodemailer-html-to-text": "^1.0.2",
+    "path": "^0.12.7",
+    "serve-favicon": "~2.3.0"
+  }
+}
