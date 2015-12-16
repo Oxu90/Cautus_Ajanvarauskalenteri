@@ -164,7 +164,7 @@ html
         startdate=$("#startdate").val(); //hidden input aloitusaika
         enddate=$("#enddate").val(); //hidden input lopetusaika
         phone=$("#phone").val(); //puhelin numero
-        $.get("http://localhost:3000/send",{to:to,firstname:firstname,lastname:lastname,text:text,phone:phone,startdate:startdate,enddate:enddate},function(data){ //lähettää tiedot palvelimen puolelle
+        $.get("http://localhost:8080/send",{to:to,firstname:firstname,lastname:lastname,text:text,phone:phone,startdate:startdate,enddate:enddate},function(data){ //lähettää tiedot palvelimen puolelle
         if(data=="sent") //jos tiedot "lähetetty"
         {
         $.jAlert({ //pop-up
