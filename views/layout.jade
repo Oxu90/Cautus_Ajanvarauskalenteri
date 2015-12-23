@@ -36,11 +36,15 @@ html
         //$("#formtable").hide();
         //$("#formtable2").show();
         //$("#send_email").hide();
+        $("#firstname").focus();
         $('#send_email').attr("disabled", true);
+        $('.message').text('');
         var from,to,firstname,lastname,text,startdate,enddate,phone; //input muuttujat
         // KALENTERI!
         $('#calendar').fullCalendar({
         //KALENTERIN EVENTIEN HAKU
+        //
+        //GOOGLE CAL
         googleCalendarApiKey: 'AIzaSyAYYyFWedE8wTE_D5_A1Pwb_3uFHDB8tmc' , //API AVAIN!
         events: { //events array joka saatu Googlelta
         googleCalendarId: 'oskari.putkonen@cautus.fi', //GOOGLE KALENTERIN ID
@@ -56,11 +60,8 @@ html
         center: 'title',
         right: 'today'
         },
-        //GOOGLE CAL?
-        eventClick: function(calEvent, jsEvent, view) {
-        alert('ajankohta on jo varattu');
-        location.reload();
-        },
+        //GOOGLE CAL END
+        //
         //VARATUN AJAN KLIKKAUS!
         dayClick: function(date, jsEvent, view, resourceObj) { //slotin klikkaus
         if (jsEvent.target.classList.contains('fc-bgevent')) { //jos slotissa taustalla eventti (background event, fc-bgevent)
@@ -76,6 +77,7 @@ html
         //$("#formtable2").show();
         //$("#send_email").hide();
         $('#send_email').attr("disabled", true); //lähetys napin poistaminen käytöstä
+        $('.message').text('Olkaa hyvä ja valitkaa ensin ajankohta ');
         }
         },
         //AJAN KLIKKAUS LOPPU!
@@ -110,6 +112,7 @@ html
         //$("#formtable").fadeIn();
         //$("#send_email").show();
         $('#send_email').attr("disabled", false); //vapauttaa lähetys nappulan
+        $('.message').text('');
         }
         else{
         $.jAlert({ //pop-up jos ajankojta on mennyt
@@ -164,7 +167,7 @@ html
         startdate=$("#startdate").val(); //hidden input aloitusaika
         enddate=$("#enddate").val(); //hidden input lopetusaika
         phone=$("#phone").val(); //puhelin numero
-        $.get("http://localhost:8080/send",{to:to,firstname:firstname,lastname:lastname,text:text,phone:phone,startdate:startdate,enddate:enddate},function(data){ //lähettää tiedot palvelimen puolelle
+        $.get("http://localhost:3000/send",{to:to,firstname:firstname,lastname:lastname,text:text,phone:phone,startdate:startdate,enddate:enddate},function(data){ //lähettää tiedot palvelimen puolelle
         if(data=="sent") //jos tiedot "lähetetty"
         {
         $.jAlert({ //pop-up

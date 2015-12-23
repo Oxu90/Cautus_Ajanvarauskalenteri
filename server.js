@@ -180,8 +180,8 @@ app.get('/send', function (req, res) {
     authorize(JSON.parse(content), saveEvents);
   });
   
-  var template = process.cwd() + '/views/template.jade';
-  var template2 = process.cwd() + '/views/tiedoteTemplate.jade';
+  var template = process.cwd() + '/views/template.jade'; //asiakkaalle
+  var template2 = process.cwd() + '/views/tiedoteTemplate.jade';//yrittäjälle
 
   // get template from file system
   fs.readFile(template, 'utf8', function(err, file){
@@ -195,7 +195,7 @@ app.get('/send', function (req, res) {
       
  
       
-  var mailOptions = {
+  var mailOptions = { //asiakkaan
     to: varaaja,
     subject: 'Ajanvarauksenne',
     html: html2

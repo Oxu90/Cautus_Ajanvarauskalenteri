@@ -12,43 +12,97 @@ body {
    
 }
 #wrapper{
-  	border: 0.1em solid #ccc;	/* wrap the calendar inside a box */
+  	/* border: 0.1em solid #ccc;	 */
   	max-width: 550px;
     max-height: 2000px;
   	box-shadow: 0.1em 0.2em 0.8em #ccc;	/* box shadow  */
     margin: 0 auto;
-    
+    border:1px solid #262626;
 }
+label {
+  
+  font-size:  18px;
+  text-transform: uppercase;
+  color: whitesmoke;
+  margin-left: 5px;
+}
+label.fn{
+    
+  font-size:  18px;
+  text-transform: uppercase;
+  color: whitesmoke;
+  width: 245px;
+  height: 50px;
+}
+label.ln{
+  font-size:  18px;
+  text-transform: uppercase;
+  color: whitesmoke;
+  width: 250px;
+  height: 50px;
+  margin-left: 10px;
+}
+
 #phone{
-  margin-left: 30px;
-  margin-top: 20px;
-  margin-bottom: 20px;
+ width: 520px;
+  height: 50px;
+  padding-left: 10px;
+  padding-right: 10px;
+   margin-left: 15px;
+  margin-right: 15px;
 }
 #firstname{
-  margin-left: 30px;
-  margin-top: 30px;
-  
+  width: 250px;
+  height: 50px;
+  margin-left: 15px;
 }
 #lastname{
-  margin-left: 30px;
-  margin-top: 30px;
+  width: 250px;
+  height: 50px;
+  margin-left: 15px;
+  
 }
 #to{
-  margin-left: 30px;
-   margin-bottom: 20px;
-   margin-top: 20px;
+ width: 520px;
+  height: 50px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-left: 15px;
+  margin-right: 15px;
+  
 }
 #content{
-  margin-left: 30px;
-}
-#send_email{
-  margin-left: 30px;
-   margin-top: 20px;
-   margin-bottom: 20px;
+  width: 520px;
+  height: 60px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+   margin-left: 15px;
+  margin-right: 15px;
+  margin-bottom: 10px;
 }
 #formtable{
-  height: 270px;
-  background-color: #6B8546;
+  height: 500px;
+}
+legend { 
+    display: block;
+    padding-left: 2px;
+    padding-right: 2px;
+    border: none;
+    color:#ffffff;
+font-size:18px;
+text-transform:uppercase;
+}
+fieldset { 
+    display: block;
+    margin-left: 2px;
+    margin-right: 2px;
+    padding-top: 0.35em;
+    padding-bottom: 0.625em;
+    padding-left: 0.75em;
+    padding-right: 0.75em;
+    border: 2px groove (internal value);
+    height: 500px;
 }
 .h1{
   margin-top: 20px;
@@ -65,11 +119,8 @@ body {
   
 }
 #SelectedTime{
-  
   margin-left: 10px;
   margin-top: 20px;
-  
-  
 }
 @media only screen and (orientation: landscape) {
     body {
@@ -84,24 +135,45 @@ body {
 }
 textarea {
    resize: none;
-   
-}
-#Info {
-  font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
-  font-size: 13px;
-  text-align: center;
-  
-}
-#speechbuble {
-  border: 0.1em solid #ccc;	/* wrap the calendar inside a box */
-  box-shadow: 0.1em 0.2em 0.3em #ccc;	/* box shadow  */
-  margin-left: 10px;
-  margin-right: 10px;
-  background-color: white;
-  text-align: center;
-  border-radius: 25px;
 }
 button:disabled {
         color: #c0c0c0;
         background-color: #ffffff;
+}
+#box {
+width:550px;
+background:#6B8546;
+
+height: 500px;
+}
+ol{
+  list-style-type: none;
+   padding: 0;
+    margin: 0;
+}
+div.formlabel{
+  background:#6B8546;
+  height: 50px;
+  padding-top: 25px;
+  margin-left: 15px;
+}
+div.forminput{
+  background:#6B8546;
+  height: 50px;  
+}
+#send_email{
+  height: 50px;
+  width: 410px;
+  align-content:  center;
+  margin-top: 20px;
+  
+  font-size:  18px;
+  margin-left: 65px;
+  margin-right: 46px;
+}
+span.message{
+   font-size:  18px;
+  color: whitesmoke;
+  
+  margin-left: 5px;
 }

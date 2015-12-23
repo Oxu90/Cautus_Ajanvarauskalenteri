@@ -10,32 +10,38 @@ block content
                   //div#speechbuble
                         //span#Info Olkaa hyvä ja valitkaa ensin aika jonka haluatte varata 
             form#formtable(onsubmit='return false')
-                         #SelectedTime
-                         span#message
-                         table(cols=2)
-                                tr
-                                     td
-                                     input#firstname(type='text', required='',maxlength=20, placeholder='Etunimi')
-                                     td
-                                     input#lastname(type='text',required='',maxlength=30, placeholder='Sukunimi')
-                               tr
-                                     td
-                                     input#to(type='email', required='', placeholder='sähköposti (matti@email.fi)')
-                                     td
-                                     input#phone(type='number',required='', placeholder='Puhelinnumero')
-                               tr
-                                     td
-                                     textarea#content(cols='50', rows='4',form="formtable", placeholder='Lisätietoja')
-                               tr
-                                    td
-                                    </br>
-                               tr
-                                     td
-                                     input#startdate(type='hidden', value='')
-                                     td
-                                     input#enddate(type='hidden', value='')
-                          button#send_email(type='button') Lähetä 
-                          #message
+                  div#box
+                        fieldset
+                              //legend yhteystiedot
+                              ol
+                                    li
+                                          div.formlabel
+                                                label.fn(for='firstname') Etunimi
+                                                label.ln(for='lastname') Sukunimi
+                                          div.forminput
+                                                input#firstname(type='text', name='etunimi' , class='firstname' ,required='',maxlength=20, placeholder='Matti')
+                                                input#lastname(type='text',required='',maxlength=30, placeholder='Meikäläinen')
+                                    li
+                                          div.formlabel
+                                                label.formlabel(for='to') Sähköposti
+                                          div.forminput
+                                                input#to(type='email', required='', placeholder='esim. matti@email.fi')
+                                    li
+                                          div.formlabel
+                                                label.formlabel(for='phone') Puhelinnumero
+                                          div.forminput
+                                                input#phone(type='tel',required='', placeholder='0501234567')
+                                    li
+                                          div.formlabel
+                                                label.formlabel(for='content') Lisätietoja
+                                    li
+                                          div.forminput
+                                                textarea#content(cols='50', rows='4',form="formtable", placeholder='Mahdollisia lisätietoja')
+                                                input#startdate(type='hidden', value='')
+                                                input#enddate(type='hidden', value='')
+                              span.message  
+                              button#send_email(type='button') Lähetä 
+                              
                           
                                      
                   
