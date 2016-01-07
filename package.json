@@ -16,7 +16,6 @@
     "fullcalendar": "^2.4.0",
     "google-auth-library": "^0.9.6",
     "googleapis": "^2.1.6",
-    "html-template": "^1.2.2",
     "jade": "~1.11.0",
     "jquery": "^2.1.4",
     "moment": "^2.10.6",
