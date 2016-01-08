@@ -33,39 +33,27 @@ html
     script.
       // <![CDATA[$("select").val() 
         $(document).ready(function(){
-        //var selection=$("#slotsel").val();
-        handle("3");
-        //(#message).text("selection is " selection);
-        function handle (selection) {
-        var opt = selection;
-        switch (opt){
-                case "1":
-                        renderCalendar("00:30:00");
-                break;
-                case "2":
-                        renderCalendar("00:45:00");
-                break;
-                case "3":
-                        renderCalendar("01:00:00");
-                break;
-                case "4":
-                        renderCalendar("01:15:00");
-                break;
-                case "5":
-                        renderCalendar("01:30:00");
-                break;
-                case "6":
-                        renderCalendar("02:00:00");
-                break;
+        var slotsize = '01:00:00';
+        switch (("#slotsel").val() ) {
+        case 1:
+            slotsize = '01:00:00';
+            break;
+        case 2:
+            slotsize = '01:00:00';
+            break;
+        case 3:
+            slotsize = '01:00:00';
+            break;
+        case 4:
+            slotsize = '01:00:00';
+            break;
+        case 5:
+            slotsize = '01:00:00';
+            break;
+        case 6:
+            slotsize = '01:00:00';
+            break;
         }
-        };
-         $('#slotsel').change(function() {
-        //var selection=$('#slotsel option:selected').text();
-        var selection=$('#slotsel').val();
-        handle(selection);
-        });
-        
-        
         //$("#formtable").hide();
         //$("#formtable2").show();
         //$("#send_email").hide();
@@ -73,14 +61,8 @@ html
         $('#send_email').attr("disabled", true);
         $('.message').text('');
         var from,to,firstname,lastname,text,startdate,enddate,phone; //input muuttujat
-        
-        function renderCalendar(slot) {
-
-        $('#calendar').fullCalendar('destroy');  // this is used to refresh (destroy and recreate)
-        var slotToDisplay =  slot;      // if slot is undefined then use default slot timing          
-
+        // KALENTERI!
         $('#calendar').fullCalendar({
-
         //KALENTERIN EVENTIEN HAKU
         //
         //GOOGLE CAL
@@ -153,18 +135,6 @@ html
         $('#send_email').attr("disabled", false); //vapauttaa lähetys nappulan
         $('.message').text('');
         }
-       // else if(showend > '16:30'){
-         // $.jAlert({ //pop-up jos ajankojta on mennyt
-        //'title': 'Suljemme 16:30',
-        //'content': 'Kokeilkaa valita lyhyempi kesto',
-        //'theme': 'red',
-        //'showAnimation': false, //ei animaatiota
-        //'hideAnimation': false, //ei animaatiota
-        //'btns': { 'text': 'sulje' }
-        //});
-        //$('#send_email').attr("disabled", true); //vapauttaa "lähetä" painikkeen
-       // $('#calendar').fullCalendar('unselect'); //poistaa epäkelvon valinnan      
-        //}
         else{
         $.jAlert({ //pop-up jos ajankojta on mennyt
         'title': 'Ajankohta on jo mennyt',
@@ -186,10 +156,10 @@ html
         eventLimit: true, // allow "more" link when too many events
         weekends: false, // Näkyykö viikonloppu?
         //hiddenDays: [0],  jos haluaa toisen vklp päicistä näkyviin.
-        slotDuration: slotToDisplay, //aikojen slottien koko
+        slotDuration: slotsize, //aikojen slottien koko
         businessHours: { //aukioloajat
         start: '08:00', // a start time 
-        end: '16:30', // an end time 
+        end: '18:00', // an end time 
         dow: [ 1, 2, 3, 4, 5 ]
         },
         minTime: "08:00:00", //ensimmäinen aika joka näkyy kalenterissa
@@ -209,17 +179,6 @@ html
         }
         }
         });
-             
-        }
-        //renderCalendar("01:00:00");
-        //renderCalendar("00:30:00");
-         
-        
-        //var slot = '01:00:00';
-        
-        
-        // KALENTERI!
-        
         //SÄHKÖPOSTI JA FORM TIETOJEN LÄHETYS
         $("#send_email").click(function(){ //"Lähetä" painikkeen clikkaus
         to=$("#to").val(); //sähköpostiosoite

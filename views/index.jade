@@ -3,10 +3,19 @@ extends layout
 block content
    #wrapper
             #titlediv
+            div
+                  label.fn2(for='slotsel') Valitse kesto
+                  select#slotsel 
+                                    option(value='1') 30 minuuttia
+                                    //option(value='2') 45 minuuttia
+                                    option(value='3' selected='selected') 1 tunti
+                                    //option(value='4') 1 tunti 15 minuuttia
+                                    //option(value='5') 1 tunti 30 minuuttia
+                                    option(value='6') 2 tuntia     
                   //.h1 Cautus Appointment
             #calendar
                   span#message
-            div#formtable2 </br>
+            div#formtable2 
                   //div#speechbuble
                         //span#Info Olkaa hyvä ja valitkaa ensin aika jonka haluatte varata 
             form#formtable(onsubmit='return false')

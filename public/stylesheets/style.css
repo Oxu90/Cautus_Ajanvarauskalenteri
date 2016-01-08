@@ -24,7 +24,7 @@ label {
   font-size:  18px;
   text-transform: uppercase;
   color: whitesmoke;
-  margin-left: 5px;
+  margin-left: 0px;
 }
 label.fn{
     
@@ -33,6 +33,16 @@ label.fn{
   color: whitesmoke;
   width: 245px;
   height: 50px;
+  margin-left: 0px;
+}
+label.fn2{
+    
+  font-size:  18px;
+  text-transform: uppercase;
+  color: #6B8546;
+  width: 245px;
+  height: 20px;
+  padding-left: 10px;
 }
 label.ln{
   font-size:  18px;
@@ -40,7 +50,7 @@ label.ln{
   color: whitesmoke;
   width: 250px;
   height: 50px;
-  margin-left: 10px;
+  margin-left: 20px;
 }
 
 #phone{
@@ -176,4 +186,13 @@ span.message{
   color: whitesmoke;
   
   margin-left: 5px;
+}
+#slotsel{
+  width: 520px;
+  height: 50px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-left: 15px;
+  margin-right: 15px;
+  margin-bottom: 20px;
 }
