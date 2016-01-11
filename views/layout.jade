@@ -31,7 +31,8 @@ html
     script(src='/bootstrap/js/bootstrap.js')
     //PÄÄ SCRIPTI, KALENTERI ja EMAIL
     script.
-      // <![CDATA[$("select").val() 
+      // <![CDATA[$("select").val()
+        
         $(document).ready(function(){
         //var selection=$("#slotsel").val();
         handle("3");
@@ -40,10 +41,10 @@ html
         var opt = selection;
         switch (opt){
                 case "1":
-                        renderCalendar("00:30:00");
+                        renderCalendar("00:15:00");
                 break;
                 case "2":
-                        renderCalendar("00:45:00");
+                        renderCalendar("00:30:00");
                 break;
                 case "3":
                         renderCalendar("01:00:00");
@@ -84,7 +85,7 @@ html
         //KALENTERIN EVENTIEN HAKU
         //
         //GOOGLE CAL
-        googleCalendarApiKey: 'AIzaSyAYYyFWedE8wTE_D5_A1Pwb_3uFHDB8tmc' , //API AVAIN!
+        googleCalendarApiKey: 'AIzaSyAYYyFWedE8wTE_D5_A1Pwb_3uFHDB8tmc', //API AVAIN!
         events: { //events array joka saatu Googlelta
         googleCalendarId: 'oskari.putkonen@cautus.fi', //GOOGLE KALENTERIN ID
         color: 'red', //TAUSTAVÄRI
@@ -134,14 +135,29 @@ html
         var eventstart = start.format(); //aloitus aika
         var eventend = end.format(); //lopetus aika
         var showstart= moment(eventstart).format('Do MMMM[ta] YYYY, [kello:] H:mm') ; //luettavaan muotoon
+        var showstartB= moment(eventstart).format('H:mm') ; //luettavaan muotoon
         var showend =  moment(eventend).format('H:mm') ; //luettavaan muotoon
         var time = new Date(eventstart); //aika verrattavaan muotoon
+        var eventminutes = moment(eventstart).diff(eventend,'minutes');
+        if(eventminutes > -30 && eventminutes < 0 ){
+        $.jAlert({ //pop-up
+        'title': 'Aika on  alle 30minuuttia',
+        'content': 'Valitsemanne ajankohta: </br><b>' + showstart+ ' - '+showend+'</b></br> Yritykemme minimi ajanvarauksen aika on 30 minuuttia. ',
+        'theme': 'red',
+        'showAnimation': false, //ei animaatiota
+        'hideAnimation': false, //ei animaatiota
+        'btns': { 'text': 'sulje' }
+        });
+        $('#send_email').attr("disabled", true); //vapauttaa "lähetä" painikkeen
+        $('#calendar').fullCalendar('unselect'); //poistaa epäkelvon valinnan
+        }
+        else{
         if(time > moment()){ //jos tulevaisuudessa
         $("#startdate").val(eventstart); //asettaa aloitus hidden inputin
         $("#enddate").val(eventend);  //asettaa lopetus hidden inputin
         $.jAlert({ //pop-up
         'title': 'Vapaa aika!',
-        'content': 'Valitsemanne ajankohta: </br><b>' + showstart+ ' - '+showend+'</b></br> Olkaa hyvä ja täyttäkää vielä yhteystietonne',
+        'content': 'Valitsemanne ajankohta: </br><b>'+ showstart+ ' - '+showend+'</b></br> Olkaa hyvä ja täyttäkää vielä yhteystietonne',
         'theme': 'green',
         'showAnimation': false, //ei animaatiota
         'hideAnimation': false, //ei animaatiota
@@ -179,6 +195,7 @@ html
         //$("#send_email").hide();
         $('#send_email').attr("disabled", true); //vapauttaa "lähetä" painikkeen
         $('#calendar').fullCalendar('unselect'); //poistaa epäkelvon valinnan
+        }
         }
         },
         editable: true,
